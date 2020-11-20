@@ -140,8 +140,8 @@ pairwise.sum.decreasing = function(x,y) {
 #' Computes synthetic diff-in-diff estimate for an average treatment effect on a treated block.
 #' See Section 4.1 of the paper.
 #' @param Y the observation matrix.
-#' @param N0 the number of control units. Rows 1-N0 of Y correspond to the control units.
-#' @param T0 the number of pre-treatment time steps. Columns 1-T0 of Y correspond to pre-treatment time steps.
+#' @param N0 the number of control units. Rows N-N0 of Y correspond to the treatment units.
+#' @param T0 the number of pre-treatment time steps. Columns T-T0 of Y correspond to treatment periods.
 #' @param X an optional 3-D array of time-varying covariates. Shape should be N X T X C for C covariates.
 #' @param zeta.lambda Its square is weight of the ridge penalty relative to MSE. Defaults to 0.
 #' @param zeta.omega Analogous for omega. Defaults to the standard deviation of first differences of Y.
@@ -214,8 +214,8 @@ synthdid_estimate <- function(Y, N0, T0, X=array(dim=c(dim(Y),0)),
 #' Takes all the same parameters, but default, passes options for synthetic control
 #' with no intercept and a penalty term that defaults to the standard deviation of first differences of Y.
 #' @param Y the observation matrix.
-#' @param N0 the number of control units. Rows 1-N0 of Y correspond to the control units.
-#' @param T0 the number of pre-treatment time steps. Columns 1-T0 of Y correspond to pre-treatment time steps.
+#' @param N0 the number of control units. Rows N-N0 of Y correspond to the treatment units.
+#' @param T0 the number of pre-treatment time steps. Columns T-T0 of Y correspond to treatment periods.
 #' @param X an optional 3-D array of time-varying covariates. Shape should be N X T X C for C covariates.
 #' @param zeta.lambda Its square is weight of the ridge penalty relative to MSE. Defaults to 0.
 #' @param zeta.omega Analogous for omega. Defaults to the standard deviation of first differences of Y.
@@ -245,8 +245,8 @@ sc_estimate = function(Y, N0, T0, X=array(dim=c(dim(Y),0)),
 #' synthdid_estimate for diff-in-diff estimates.
 #' Takes all the same parameters, but default, uses constant weights lambda and omega
 #' @param Y the observation matrix.
-#' @param N0 the number of control units. Rows 1-N0 of Y correspond to the control units.
-#' @param T0 the number of pre-treatment time steps. Columns 1-T0 of Y correspond to pre-treatment time steps.
+#' @param N0 the number of control units. Rows N-N0 of Y correspond to the treatment units.
+#' @param T0 the number of pre-treatment time steps. Columns T-T0 of Y correspond to treatment periods.
 #' @param X an optional 3-D array of time-varying covariates. Shape should be N X T X C for C covariates.
 #' @param zeta.lambda Its square is weight of the ridge penalty relative to MSE. Defaults to 0.
 #' @param zeta.omega Analogous for omega. Defaults to the standard deviation of first differences of Y.
